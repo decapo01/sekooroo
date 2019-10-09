@@ -41,8 +41,8 @@ object Sekooroo {
     
       operator match {
         
-        case In    => " in " + values.reduceLeftOption(_ + ", " + _).getOrElse("false")
-        case NotIn => " not in " + values.reduceLeftOption(_ + ", " + _).getOrElse("true")
+        case In    => " in " + values.reduceLeftOption(_ + ", " + _).map(x => s"($x)").getOrElse("false")
+        case NotIn => " not in " + values.reduceLeftOption(_ + ", " + _).map(x => s"($x)").getOrElse("true")
       }
     
     }
